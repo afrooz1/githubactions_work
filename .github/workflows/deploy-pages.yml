@@ -16,7 +16,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # For static HTML, just upload repo root.
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
