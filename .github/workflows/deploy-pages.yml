@@ -2,8 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
 
 permissions:
   contents: read
@@ -11,19 +10,20 @@ permissions:
   id-token: write
 
 jobs:
-  build-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Upload artifact for GitHub Pages
-        uses: actions/upload-pages-artifact@v1
+      # For static HTML, just upload repo root.
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: ./
+          path: .
 
   deploy:
-    needs: build-deploy
+    needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -31,4 +31,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
