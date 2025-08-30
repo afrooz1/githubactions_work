@@ -1,371 +1,176 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>GitHub Pages & Actions Demo</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    :root {
-      --primary: #6e5494;
-      --primary-dark: #553c9a;
-      --secondary: #24292e;
-      --accent: #28a745;
-      --light: #f6f8fa;
-      --dark: #24292e;
-      --gray: #6a737d;
-      --light-gray: #e1e4e8;
-      --white: #ffffff;
-      --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      --transition: all 0.3s ease;
-    }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      color: var(--secondary);
-      background-color: var(--light);
-      background-image: 
-        radial-gradient(var(--light-gray) 1px, transparent 1px),
-        radial-gradient(var(--light-gray) 1px, transparent 1px);
-      background-size: 40px 40px;
-      background-position: 0 0, 20px 20px;
-    }
-    
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    
-    /* Header Styles */
-    .site-header {
-      background: var(--white);
-      box-shadow: var(--shadow);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    
-    .site-header .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 20px;
-    }
-    
-    .brand {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--primary);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    .brand i {
-      color: var(--accent);
-    }
-    
-    .site-header nav {
-      display: flex;
-      gap: 1.5rem;
-    }
-    
-    .site-header nav a {
-      text-decoration: none;
-      color: var(--secondary);
-      font-weight: 500;
-      transition: var(--transition);
-      position: relative;
-      padding: 0.5rem 0;
-    }
-    
-    .site-header nav a:after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--primary);
-      transition: var(--transition);
-    }
-    
-    .site-header nav a:hover {
-      color: var(--primary);
-    }
-    
-    .site-header nav a:hover:after {
-      width: 100%;
-    }
-    
-    /* Hero Section */
-    .hero {
-      text-align: center;
-      padding: 5rem 1rem;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      color: var(--white);
-      border-radius: 12px;
-      margin: 2rem 0;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .hero:before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
-      z-index: 0;
-    }
-    
-    .hero > * {
-      position: relative;
-      z-index: 1;
-    }
-    
-    .hero h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1.5rem;
-      line-height: 1.2;
-    }
-    
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 0 auto 2rem;
-      opacity: 0.9;
-    }
-    
-    .btn {
-      display: inline-block;
-      background: var(--accent);
-      color: white;
-      padding: 0.8rem 2rem;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: var(--transition);
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      border: 2px solid transparent;
-    }
-    
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-      background: transparent;
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-    
-    /* Card Styles */
-    .card {
-      background: var(--white);
-      border-radius: 12px;
-      padding: 2.5rem;
-      margin: 2rem 0;
-      box-shadow: var(--shadow);
-      transition: var(--transition);
-      border-left: 4px solid var(--primary);
-    }
-    
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-    }
-    
-    .card h3 {
-      font-size: 1.8rem;
-      margin-bottom: 1.5rem;
-      color: var(--primary);
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    
-    .card h3 i {
-      color: var(--accent);
-    }
-    
-    .card p {
-      color: var(--gray);
-      margin-bottom: 1rem;
-    }
-    
-    /* Grid Layout */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-    
-    .grid article {
-      padding: 1.5rem;
-      background: var(--light);
-      border-radius: 8px;
-      transition: var(--transition);
-    }
-    
-    .grid article:hover {
-      background: var(--white);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    }
-    
-    .grid h4 {
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-      color: var(--primary);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    .grid h4 i {
-      color: var(--accent);
-      font-size: 1rem;
-    }
-    
-    code {
-      background: var(--light);
-      padding: 0.2rem 0.4rem;
-      border-radius: 4px;
-      font-family: monospace;
-      color: var(--primary-dark);
-      font-size: 0.9rem;
-    }
-    
-    /* Footer */
-    .site-footer {
-      background: var(--secondary);
-      color: var(--white);
-      padding: 2rem 0;
-      margin-top: 4rem;
-      text-align: center;
-    }
-    
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    main section {
-      animation: fadeIn 0.6s ease-out forwards;
-    }
-    
-    main section:nth-child(2) { animation-delay: 0.2s; }
-    main section:nth-child(3) { animation-delay: 0.4s; }
-    main section:nth-child(4) { animation-delay: 0.6s; }
-    
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .site-header .container {
-        flex-direction: column;
-        gap: 1rem;
-      }
-      
-      .site-header nav {
-        gap: 1rem;
-      }
-      
-      .hero h2 {
-        font-size: 2rem;
-      }
-      
-      .grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git & GitHub Guide</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <h1 class="brand"><i class="fab fa-github"></i> Git Mentor Pro</h1>
-      <nav>
-        <a href="#about"><i class="fas fa-info-circle"></i> About</a>
-        <a href="#features"><i class="fas fa-star"></i> Features</a>
-        <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
-      </nav>
-    </div>
-  </header>
+    <!-- Header -->
+    <header>
+        <h1>Git & GitHub Guide for Beginners</h1>
+        <p>Learn Git, GitHub, branching strategies, and most used commands.</p>
+    </header>
 
-  <main class="container">
-    <section id="hero" class="hero">
-      <h2>Master Git · GitHub Actions · Pages</h2>
-      <p>A clean, modern starter site to practice branching, PRs, and GitHub Actions deployment with a professional workflow.</p>
-      <a class="btn" href="#about">Get Started <i class="fas fa-arrow-right"></i></a>
+    <!-- What is Git -->
+    <!-- What is Git -->
+<section id="git">
+    <h2>What is Git?</h2>
+    <p>Git is a distributed version control system that allows developers to track and manage changes in their code over time. It helps in collaboration, backup, and organizing code efficiently.</p>
+    <ul>
+        <li><strong>Commit:</strong> Save changes to the local repository.</li>
+        <li><strong>Branch:</strong> Create parallel versions of your project to work independently.</li>
+        <li><strong>Repository:</strong> A storage location for your code (can be local or remote).</li>
+        <li><strong>Version Control:</strong> Track who changed what and when.</li>
+    </ul>
+    <p><em>Example:</em> You can make changes in your code, commit them, and then revert or compare versions easily with Git.</p>
+</section>
+
+<!-- What is GitHub -->
+<section id="github">
+    <h2>What is GitHub?</h2>
+    <p>GitHub is a cloud-based platform that hosts Git repositories, enabling collaboration and project management. It allows multiple developers to work on the same project simultaneously.</p>
+    <ul>
+        <li><strong>Remote repository:</strong> Your code stored on GitHub, accessible from anywhere.</li>
+        <li><strong>Pull Requests (PRs):</strong> Propose and review code changes before merging.</li>
+        <li><strong>Branch protection:</strong> Control who can push to important branches.</li>
+        <li><strong>Issues & Projects:</strong> Track bugs, tasks, and progress.</li>
+    </ul>
+    <p><em>Example:</em> You can clone a GitHub repository locally, make changes, push them back, and open a pull request for review.</p>
+</section>
+
+<!-- GitHub Actions -->
+<section id="actions">
+    <h2>GitHub Actions</h2>
+    <p>GitHub Actions is a CI/CD (Continuous Integration / Continuous Deployment) service provided by GitHub. It allows you to automate tasks like:</p>
+    <ul>
+        <li>Running tests when code is pushed</li>
+        <li>Deploying your website automatically</li>
+        <li>Generating reports or notifications</li>
+    </ul>
+    <p><strong>Example Workflow:</strong> Every time you push code to the main branch, GitHub Actions can automatically build your project, run tests, and deploy it to GitHub Pages or any cloud platform.</p>
+</section>
+
+<!-- Branching Strategy -->
+<section id="branching">
+    <h2>Branching Strategy</h2>
+    <p>Branching strategies help organize work and manage code changes safely, especially when multiple developers are involved.</p>
+    <ul>
+        <li><strong>Main/Master branch:</strong> Always contains stable code ready for production.</li>
+        <li><strong>Feature branches:</strong> Used to develop new features independently without affecting the main branch.</li>
+        <li><strong>Hotfix branches:</strong> Used for urgent bug fixes that need to be applied immediately to production.</li>
+    </ul>
+    <p><em>Example:</em> You can create a branch <code>feature/login-page</code> to work on a login feature. Once complete, it can be merged into the main branch safely.</p>
+</section>
+
+<!-- Merge vs Rebase -->
+<section id="merge-rebase">
+    <h2>Merge vs Rebase</h2>
+    <p><strong>Merge:</strong> Combines two branches preserving the full history. Useful when you want to see all commits from both branches.</p>
+    <p><strong>Rebase:</strong> Moves your branch commits on top of another branch for a linear, cleaner history. Useful for keeping history tidy before merging.</p>
+    <table>
+        <tr>
+            <th>Merge</th>
+            <th>Rebase</th>
+        </tr>
+        <tr>
+            <td>Preserves history</td>
+            <td>Linear history</td>
+        </tr>
+        <tr>
+            <td>Easy to understand</td>
+            <td>Rewrites history, careful with shared branches</td>
+        </tr>
+    </table>
+    <p><em>Example:</em> If your branch is behind main, merging will create a merge commit, while rebasing will move your commits on top of main.</p>
+</section>
+
+
+    <!-- Git Commands -->
+    <section id="commands">
+        <h2>50 Most Used Git Commands</h2>
+
+        <!-- Collapsible Sections -->
+        <details>
+            <summary>Setup</summary>
+            <pre><code>git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+git init</code></pre>
+        </details>
+
+        <details>
+            <summary>Basic Commands</summary>
+            <pre><code>git status
+git add file_name
+git add .
+git commit -m "message"
+git log
+git diff
+git show commit
+git rm file_name
+git mv <src> <dest></code></pre>
+        </details>
+
+        <details>
+            <summary>Branching</summary>
+            <pre><code>git branch
+git branch branch-name
+git checkout branch
+git checkout -b branch
+git merge branch
+git rebase branch
+git branch -d branch
+git branch -D branch
+git log --oneline --graph --all
+git reflog</code></pre>
+        </details>
+
+        <details>
+            <summary>Remote Repositories</summary>
+            <pre><code>git remote -v
+git remote add origin url
+git clone url
+git fetch
+git pull
+git push
+git push -u origin branch
+git remote remove name
+git remote show name
+git push origin --delete <branch></code></pre>
+        </details>
+
+        <details>
+            <summary>Stashing & History</summary>
+            <pre><code>git stash
+git stash list
+git stash apply
+git stash drop
+git revert commit
+git reset --soft commit
+git reset --hard commit
+git clean -fd</code></pre>
+        </details>
+
+        <details>
+            <summary>Advanced / Other Useful</summary>
+            <pre><code>git tag
+git tag tagname
+git show tagname
+git cherry-pick commit
+git blame file
+git shortlog
+git bisect start
+git bisect bad
+git bisect good
+git describe</code></pre>
+        </details>
+
     </section>
 
-    <section id="about" class="card">
-      <h3><i class="fas fa-info-circle"></i> About this repository</h3>
-      <p>This is a minimal yet beautiful static site — HTML + CSS only — specifically designed to be deployed to GitHub Pages with a GitHub Actions workflow.</p>
-      <p>Perfect for learning modern development workflows while creating something visually appealing.</p>
-    </section>
-
-    <section id="features" class="card grid">
-      <article>
-        <h4><i class="fas fa-code-branch"></i> Branching</h4>
-        <p>Create feature branches, open pull requests, and merge to <code>main</code> following best practices.</p>
-      </article>
-      <article>
-        <h4><i class="fas fa-cogs"></i> Workflow</h4>
-        <p>GitHub Actions automatically build artifacts and deploy to GitHub Pages on pushes to <code>main</code>.</p>
-      </article>
-      <article>
-        <h4><i class="fas fa-shield-alt"></i> Protection</h4>
-        <p>Use branch protection rules to require reviews and passing checks before merging.</p>
-      </article>
-      <article>
-        <h4><i class="fas fa-hands-on"></i> Hands-on</h4>
-        <p>Make changes on a branch, push, open a PR — then watch it deploy automatically when merged.</p>
-      </article>
-    </section>
-
-    <section id="contact" class="card">
-      <h3><i class="fas fa-envelope"></i> Contact & Feedback</h3>
-      <p>Share your deployed URL when ready — I'll review your implementation and suggest improvements to enhance your workflow.</p>
-      <p>Feel free to experiment with the design and functionality to make this project your own!</p>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <small>Made for Git training • &copy; <span id="year"></span></small>
-    </div>
-  </footer>
-
-  <script>
-    // Set current year in footer
-    document.getElementById('year').textContent = new Date().getFullYear();
-    
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          window.scrollTo({
-            top: targetElement.offsetTop - 80,
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
-  </script>
+    <!-- Footer -->
+    <footer>
+        <p>Reference: <a href="https://git-scm.com/docs">Git Docs</a> | <a href="https://docs.github.com/">GitHub Docs</a> By Afrooz</p>
+    </footer>
 </body>
 </html>
