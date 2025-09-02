@@ -1,176 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Git & GitHub Guide</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git & GitHub Guide</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <h1>Git & GitHub</h1>
-        <p>Learn Git, GitHub, branching strategies, and most used commands.</p>
-    </header>
+  <!-- Header -->
+  <header>
+    <h1>Git & GitHub</h1>
+    <p>Learn Git, GitHub, branching strategies, and most used commands.</p>
+  </header>
 
-    <!-- What is Git -->
-    <!-- What is Git -->
-<section id="git">
+  <!-- What is Git -->
+  <section id="git">
     <h2>What is Git?</h2>
     <p>Git is a distributed version control system that allows developers to track and manage changes in their code over time. It helps in collaboration, backup, and organizing code efficiently.</p>
     <ul>
-        <li><strong>Commit:</strong> Save changes to the local repository.</li>
-        <li><strong>Branch:</strong> Create parallel versions of your project to work independently.</li>
-        <li><strong>Repository:</strong> A storage location for your code (can be local or remote).</li>
-        <li><strong>Version Control:</strong> Track who changed what and when.</li>
+      <li><strong>Commit:</strong> Save changes to the local repository.</li>
+      <li><strong>Branch:</strong> Create parallel versions of your project to work independently.</li>
+      <li><strong>Repository:</strong> A storage location for your code (can be local or remote).</li>
+      <li><strong>Version Control:</strong> Track who changed what and when.</li>
     </ul>
     <p><em>Example:</em> You can make changes in your code, commit them, and then revert or compare versions easily with Git.</p>
-</section>
+  </section>
 
-<!-- What is GitHub -->
-<section id="github">
+  <!-- What is GitHub -->
+  <section id="github">
     <h2>What is GitHub?</h2>
     <p>GitHub is a cloud-based platform that hosts Git repositories, enabling collaboration and project management. It allows multiple developers to work on the same project simultaneously.</p>
     <ul>
-        <li><strong>Remote repository:</strong> Your code stored on GitHub, accessible from anywhere.</li>
-        <li><strong>Pull Requests (PRs):</strong> Propose and review code changes before merging.</li>
-        <li><strong>Branch protection:</strong> Control who can push to important branches.</li>
-        <li><strong>Issues & Projects:</strong> Track bugs, tasks, and progress.</li>
+      <li><strong>Remote repository:</strong> Your code stored on GitHub, accessible from anywhere.</li>
+      <li><strong>Pull Requests (PRs):</strong> Propose and review code changes before merging.</li>
+      <li><strong>Branch protection:</strong> Control who can push to important branches.</li>
+      <li><strong>Issues & Projects:</strong> Track bugs, tasks, and progress.</li>
     </ul>
     <p><em>Example:</em> You can clone a GitHub repository locally, make changes, push them back, and open a pull request for review.</p>
-</section>
+  </section>
 
-<!-- GitHub Actions -->
-<section id="actions">
+  <!-- GitHub Actions -->
+  <section id="actions">
     <h2>GitHub Actions</h2>
     <p>GitHub Actions is a CI/CD (Continuous Integration / Continuous Deployment) service provided by GitHub. It allows you to automate tasks like:</p>
     <ul>
-        <li>Running tests when code is pushed</li>
-        <li>Deploying your website automatically</li>
-        <li>Generating reports or notifications</li>
+      <li>Running tests when code is pushed</li>
+      <li>Deploying your website automatically</li>
+      <li>Generating reports or notifications</li>
     </ul>
     <p><strong>Example Workflow:</strong> Every time you push code to the main branch, GitHub Actions can automatically build your project, run tests, and deploy it to GitHub Pages or any cloud platform.</p>
-</section>
+  </section>
 
-<!-- Branching Strategy -->
-<section id="branching">
+  <!-- Branching Strategy -->
+  <section id="branching">
     <h2>Branching Strategy</h2>
     <p>Branching strategies help organize work and manage code changes safely, especially when multiple developers are involved.</p>
     <ul>
-        <li><strong>Main/Master branch:</strong> Always contains stable code ready for production.</li>
-        <li><strong>Feature branches:</strong> Used to develop new features independently without affecting the main branch.</li>
-        <li><strong>Hotfix branches:</strong> Used for urgent bug fixes that need to be applied immediately to production.</li>
+      <li><strong>Main/Master branch:</strong> Always contains stable code ready for production.</li>
+      <li><strong>Feature branches:</strong> Used to develop new features independently without affecting the main branch.</li>
+      <li><strong>Hotfix branches:</strong> Used for urgent bug fixes that need to be applied immediately to production.</li>
     </ul>
     <p><em>Example:</em> You can create a branch <code>feature/login-page</code> to work on a login feature. Once complete, it can be merged into the main branch safely.</p>
-</section>
+  </section>
 
-<!-- Merge vs Rebase -->
-<section id="merge-rebase">
+  <!-- Merge vs Rebase -->
+  <section id="merge-rebase">
     <h2>Merge vs Rebase</h2>
     <p><strong>Merge:</strong> Combines two branches preserving the full history. Useful when you want to see all commits from both branches.</p>
     <p><strong>Rebase:</strong> Moves your branch commits on top of another branch for a linear, cleaner history. Useful for keeping history tidy before merging.</p>
     <table>
-        <tr>
-            <th>Merge</th>
-            <th>Rebase</th>
-        </tr>
-        <tr>
-            <td>Preserves history</td>
-            <td>Linear history</td>
-        </tr>
-        <tr>
-            <td>Easy to understand</td>
-            <td>Rewrites history, careful with shared branches</td>
-        </tr>
+      <tr>
+        <th>Merge</th>
+        <th>Rebase</th>
+      </tr>
+      <tr>
+        <td>Preserves history</td>
+        <td>Linear history</td>
+      </tr>
+      <tr>
+        <td>Easy to understand</td>
+        <td>Rewrites history, careful with shared branches</td>
+      </tr>
     </table>
     <p><em>Example:</em> If your branch is behind main, merging will create a merge commit, while rebasing will move your commits on top of main.</p>
-</section>
+  </section>
 
+  <!-- Git Commands -->
+  <section id="commands">
+    <h2>50 Most Used Git Commands</h2>
 
-    <!-- Git Commands -->
-    <section id="commands">
-        <h2>50 Most Used Git Commands</h2>
+    <!-- Setup -->
+    <details>
+      <summary>Setup</summary>
+      <pre><code>
+<span class="command">git config --global user.name</span> <span class="arg">"Your Name"</span>   <span class="comment"># Set username globally</span>
+<span class="command">git config --global user.email</span> <span class="arg">"you@example.com"</span> <span class="comment"># Set email globally</span>
+<span class="command">git init</span>                      <span class="comment"># Initialize a new repository</span>
+      </code></pre>
+    </details>
 
-        <!-- Collapsible Sections -->
-        <details>
-            <summary>Setup</summary>
-            <pre><code>git config --global user.name "Your Name"
-git config --global user.email "you@example.com"
-git init</code></pre>
-        </details>
+    <!-- Basic Commands -->
+    <details>
+      <summary>Basic Commands</summary>
+      <pre><code>
+<span class="command">git status</span>              <span class="comment"># Show working directory status</span>
+<span class="command">git add</span> <span class="arg">file</span>        <span class="comment"># Stage a specific file</span>
+<span class="command">git add .</span>               <span class="comment"># Stage all changes</span>
+<span class="command">git commit -m</span> <span class="arg">"msg"</span> <span class="comment"># Commit with a message</span>
+<span class="command">git log</span>                 <span class="comment"># View commit history</span>
+<span class="command">git diff</span>                <span class="comment"># Show unstaged changes</span>
+<span class="command">git show</span> <span class="arg">id</span>        <span class="comment"># Show a specific commit</span>
+<span class="command">git rm</span> <span class="arg">file</span>        <span class="comment"># Remove a file</span>
+<span class="command">git mv</span> <span class="arg">old new</span>     <span class="comment"># Move or rename a file</span>
+      </code></pre>
+    </details>
 
-        <details>
-            <summary>Basic Commands</summary>
-            <pre><code>git status
-git add file_name
-git add .
-git commit -m "message"
-git log
-git diff
-git show commit
-git rm file_name
-git mv <src> <dest></code></pre>
-        </details>
+    <!-- Branching -->
+    <details>
+      <summary>Branching</summary>
+      <pre><code>
+<span class="command">git branch</span>               <span class="comment"># List branches</span>
+<span class="command">git branch</span> <span class="arg">new</span>      <span class="comment"># Create new branch</span>
+<span class="command">git checkout</span> <span class="arg">branch</span>  <span class="comment"># Switch to branch</span>
+<span class="command">git checkout -b</span> <span class="arg">branch</span> <span class="comment"># Create + switch branch</span>
+<span class="command">git merge</span> <span class="arg">branch</span>    <span class="comment"># Merge branch into current</span>
+<span class="command">git rebase</span> <span class="arg">branch</span>   <span class="comment"># Reapply commits onto another</span>
+<span class="command">git branch -d</span> <span class="arg">branch</span> <span class="comment"># Delete branch (safe)</span>
+<span class="command">git branch -D</span> <span class="arg">branch</span> <span class="comment"># Force delete branch</span>
+<span class="command">git log --oneline --graph</span> <span class="comment"># Visualize commit graph</span>
+<span class="command">git reflog</span>               <span class="comment"># Show reference log</span>
+      </code></pre>
+    </details>
 
-        <details>
-            <summary>Branching</summary>
-            <pre><code>git branch
-git branch branch-name
-git checkout branch
-git checkout -b branch
-git merge branch
-git rebase branch
-git branch -d branch
-git branch -D branch
-git log --oneline --graph --all
-git reflog</code></pre>
-        </details>
+    <!-- Remote -->
+    <details>
+      <summary>Remote Repositories</summary>
+      <pre><code>
+<span class="command">git remote -v</span>                   <span class="comment"># Show remotes</span>
+<span class="command">git remote add origin</span> <span class="arg">url</span>  <span class="comment"># Add a remote</span>
+<span class="command">git clone</span> <span class="arg">url</span>              <span class="comment"># Clone a repo</span>
+<span class="command">git fetch</span>                        <span class="comment"># Fetch from remote</span>
+<span class="command">git pull</span>                         <span class="comment"># Fetch + merge</span>
+<span class="command">git push</span>                         <span class="comment"># Push changes</span>
+<span class="command">git push -u origin</span> <span class="arg">branch</span> <span class="comment"># Push + set upstream</span>
+<span class="command">git remote remove</span> <span class="arg">name</span>    <span class="comment"># Remove remote</span>
+<span class="command">git remote show</span> <span class="arg">name</span>     <span class="comment"># Show remote info</span>
+<span class="command">git push origin --delete</span> <span class="arg">branch</span> <span class="comment"># Delete remote branch</span>
+      </code></pre>
+    </details>
 
-        <details>
-            <summary>Remote Repositories</summary>
-            <pre><code>git remote -v
-git remote add origin url
-git clone url
-git fetch
-git pull
-git push
-git push -u origin branch
-git remote remove name
-git remote show name
-git push origin --delete <branch></code></pre>
-        </details>
+    <!-- Stashing & History -->
+    <details>
+      <summary>Stashing & History</summary>
+      <pre><code>
+<span class="command">git stash</span>              <span class="comment"># Save changes temporarily</span>
+<span class="command">git stash list</span>         <span class="comment"># List stashes</span>
+<span class="command">git stash apply</span>        <span class="comment"># Reapply last stash</span>
+<span class="command">git stash drop</span>         <span class="comment"># Remove last stash</span>
+<span class="command">git revert</span> <span class="arg">id</span>          <span class="comment"># Revert a commit</span>
+<span class="command">git reset --soft</span> <span class="arg">id</span> <span class="comment"># Undo, keep changes staged</span>
+<span class="command">git reset --hard</span> <span class="arg">id</span> <span class="comment"># Undo completely</span>
+<span class="command">git clean -fd</span>          <span class="comment"># Remove untracked files</span>
+      </code></pre>
+    </details>
 
-        <details>
-            <summary>Stashing & History</summary>
-            <pre><code>git stash
-git stash list
-git stash apply
-git stash drop
-git revert commit
-git reset --soft commit
-git reset --hard commit
-git clean -fd</code></pre>
-        </details>
+    <!-- Advanced -->
+    <details>
+      <summary>Advanced / Other Useful</summary>
+      <pre><code>
+<span class="command">git tag</span>                     <span class="comment"># List tags</span>
+<span class="command">git tag</span> <span class="arg">name</span>             <span class="comment"># Create a tag</span>
+<span class="command">git show</span> <span class="arg">tag</span>             <span class="comment"># Show tag details</span>
+<span class="command">git cherry-pick</span> <span class="arg">id</span>        <span class="comment"># Apply a specific commit</span>
+<span class="command">git blame</span> <span class="arg">file</span>           <span class="comment"># Who changed each line</span>
+<span class="command">git shortlog</span>               <span class="comment"># Summarize commits by author</span>
+<span class="command">git bisect start</span>           <span class="comment"># Begin binary search</span>
+<span class="command">git bisect bad</span>             <span class="comment"># Mark commit as bad</span>
+<span class="command">git bisect good</span>            <span class="comment"># Mark commit as good</span>
+<span class="command">git describe</span>                <span class="comment"># Describe commit/tag</span>
+      </code></pre>
+    </details>
+  </section>
 
-        <details>
-            <summary>Advanced / Other Useful</summary>
-            <pre><code>git tag
-git tag tagname
-git show tagname
-git cherry-pick commit
-git blame file
-git shortlog
-git bisect start
-git bisect bad
-git bisect good
-git describe</code></pre>
-        </details>
-
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>Reference: <a href="https://git-scm.com/docs">Git Docs</a> | <a href="https://docs.github.com/">GitHub Docs</a> By Afrooz</p>
-    </footer>
+  <!-- Footer -->
+  <footer>
+    <p>Reference: <a href="https://git-scm.com/docs">Git Docs</a> | <a href="https://docs.github.com/">GitHub Docs</a> | By Afrooz</p>
+  </footer>
 </body>
 </html>
